@@ -1,20 +1,13 @@
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow: hidden; /* Prevent scrolling */
+#quiz-container {
+    width: 300px;
+    margin: auto;
+    text-align: center;
 }
 
-.tiktok-embed {
-  position: fixed; /* Position it relative to the viewport */
-  top: 0;
-  left: 0;
-  width: 100vw; /* Full viewport width */
-  height: 100vh; /* Full viewport height */
-  z-index: 1000; /* Ensure it's above other content */
+#question {
+    margin-bottom: 20px;
 }
 
-.tiktok-embed section {
-  height: 100% !important; /* Override TikTok's styles */
+button {
+    margin-top: 20px;
 }
-
