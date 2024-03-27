@@ -2,8 +2,14 @@
 <html>
 <head>
     <title>Quiz App</title>
-    <link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/Imb2023/ofelia2342/main/styles.css">
+    <style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size: 16px;}
+img {margin-bottom: -8px;}
+.mySlides {display: none;}
+</style>
 </head>
+
 <body>
     <div id="quiz-container">
         <div id="question"></div>
@@ -11,6 +17,47 @@
         <button id="submit">Submit Answer</button>
         <div id="result"></div>
     </div>
-    <script src="https://raw.githubusercontent.com/Imb2023/ofelia2342/main/Script.js"></script>
+    <script>
+        const questions = [
+    {
+        question: "What is 2+2?",
+        answers: ["2", "3", "4", "5"],
+        correct: "4"
+    },
+    {
+        question: "Capital of France?",
+        answers: ["Paris", "London", "Berlin", "Madrid"],
+        correct: "Paris"
+    }
+    // Add more questions here
+];
+
+function displayQuestion() {
+    const qIndex = Math.floor(Math.random() * questions.length);
+    const q = questions[qIndex];
+
+    document.getElementById('question').innerText = q.question;
+    const answersEl = document.getElementById('answers');
+    answersEl.innerHTML = ""; // Clear previous answers
+
+    q.answers.forEach(answer => {
+        const button = document.createElement('button');
+        button.innerText = answer;
+        button.onclick = () => checkAnswer(answer, q.correct);
+        answersEl.appendChild(button);
+    });
+}
+
+function checkAnswer(selected, correct) {
+    const resultEl = document.getElementById('result');
+    if (selected === correct) {
+        resultEl.innerText = "Correct!";
+    } else {
+        resultEl.innerText = "Wrong answer. Try again!";
+    }
+
+    setTimeout(displayQuestion, 2000); // Display next question after 2 seconds
+}
+    </script>
 </body>
 </html>
